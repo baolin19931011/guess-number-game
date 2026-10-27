@@ -8,7 +8,13 @@ def guessing_game():
     print("I picked a number between 1 and 100.")
 
     while True:
-        guess = int(input("Enter your guess: "))
+        try:
+            guess = int(input("Enter your guess: "))
+        except ValueError:
+            print("请输入一个有效的数字！（别输入字母或符号）")
+            continue  # 输入错了，直接跳过这次循环，重新来
+
+        # 只有输入成功，才会走到这里
         attempts += 1
 
         if guess < secret_number:
